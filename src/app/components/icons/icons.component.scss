@@ -1,0 +1,27 @@
+.envelop {
+    direction: rtl;
+    h1 {
+        text-align: right;
+    }
+    .part {
+        padding: 0.7rem;
+        .couple {
+            display: flex;
+            flex-direction: row;
+            .label {
+                width: 200px;
+                font-size: 20px;
+                font-style: italic;
+                border: 1px solid grey;
+                background-color: lightcyan;
+                padding: 5px;
+            }
+            .bind {
+                width: 100%;
+                border: 1px solid grey;
+                background-color: lightsteelblue;
+                padding: 5px;
+            }
+        }
+    }
+}

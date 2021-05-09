@@ -1,0 +1,20 @@
+.envelop {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 1rem;
+    direction: rtl;
+    div {
+        font-size: 28px;
+        cursor: pointer;
+        padding: 1rem;
+        background-color: aquamarine;
+        border: 1px solid blue;
+        width: 100%;
+        min-width: 155px;
+        text-align: center;
+    }
+    div:hover{
+        background-color: cadetblue;
+    }
+}

@@ -1,0 +1,26 @@
+.envelop {
+    direction: rtl;
+    padding: 1rem;
+    h1 {
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+    .sec1 {
+        display: flex;
+        flex-wrap: wrap;
+        .car-div {
+            padding: 10px;
+        }
+    }
+    .sec2 {
+        .year-div {
+            padding: 10px;
+        }
+    }
+    .sec3 {
+        .img {
+            cursor: pointer;
+            padding: 10px;
+        }
+    }
+}

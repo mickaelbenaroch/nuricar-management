@@ -1,16 +1,2 @@
-<section *ngIf="state === 1">
-    <h1>Nuricar Management Application</h1>
-    <div *ngFor="let car of cars">
-        <button (click)="carClicked(car)">{{car.modelName}}</button>
-    </div>
-</section>
-
-<section *ngIf="state === 2 && selectedCar">
-    <div *ngFor="let year of selectedCar.years">
-        <button (click)="yearClicked(year)" *ngIf="year !== 'hybrid'">{{year | yearPipe}}</button>
-    </div>
-</section>
-
-<section *ngIf="state === 3 && selectedCar">
-   <img *ngFor="let img of iconsArr" src="{{img}}" style="width: 50px; height: 50px;"/>
-</section>
+<ngx-ui-loader></ngx-ui-loader>
+<router-outlet></router-outlet>

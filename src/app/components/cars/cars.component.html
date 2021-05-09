@@ -1,0 +1,18 @@
+<div class="envelop">
+    <h1>ברוך הבא למערכת הניהול של NURICAR</h1>
+    <section *ngIf="state === 1" class="sec1">
+        <div *ngFor="let car of cars" class="car-div">
+            <button (click)="carClicked(car)">{{car.modelName}}</button>
+        </div>
+    </section>
+    
+    <section *ngIf="state === 2 && selectedCar" class="sec2">
+        <div *ngFor="let year of selectedCar.years" class="year-div">
+            <button (click)="yearClicked(year)" *ngIf="year !== 'hybrid'">{{year | yearPipe}}</button>
+        </div>
+    </section>
+    
+    <section *ngIf="state === 3 && selectedCar" class="sec3">
+       <img *ngFor="let img of iconsArr" src="{{img}}" style="width: 50px; height: 50px;" class="img"/>
+    </section>
+</div>

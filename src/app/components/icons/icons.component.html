@@ -1,0 +1,33 @@
+<div class="envelop">
+    <h1>נורות הזהרה</h1>
+    <div *ngFor="let icon of icons" class="part">
+        <button (click)="edit(icon)">{{icon.buttonState}}</button>
+        <div class="couple">
+            <span class="label">שם הנורית:</span>
+            <input class="bind" [disabled]="!icon.isInEditMode" value="{{icon.title}}" (change)="modelChanged($event, icon, 'title')"/>
+        </div>
+        <div class="couple">
+            <span class="label">תיאור:</span>
+            <input class="bind" [disabled]="!icon.isInEditMode" value="{{icon.description}}" (change)="modelChanged($event, icon, 'description')"/>
+        </div>
+        <div class="couple">
+            <span class="label">פיתרון:</span>
+            <input class="bind" [disabled]="!icon.isInEditMode" value="{{icon.suggestion}}" (change)="modelChanged($event, icon, 'suggestion')"/>
+        </div>
+        <div class="couple">
+            <span class="label">חמור ברמה:</span>
+            <input class="bind" [disabled]="!icon.isInEditMode" value="{{icon.severity}}" (change)="modelChanged($event, icon, 'severity')"/>
+        </div>
+        <div class="couple">
+            <span class="label" style="width: 178px !important">נורות משוייכות</span>
+            <ul>
+                <li style="background-color: yellow; padding: 5px;" *ngFor="let path of icon.paths">{{path}}<img [src]="path" style="height: 30px;width: 30px;margin-right: 10px;"/></li>
+                <input [disabled]="!icon.isInEditMode" style="margin-top: 10px;" value="{{icon.temp}}" placeholder="כתוב משהו.." (change)="modelpathAdd($event, icon)" type="text"/><button (click)="addPath(icon)">הוסף</button>
+            </ul>
+        </div>
+        <div *ngIf="icon && icon.more" class="couple">
+            <span class="label">תוספות:</span>
+            <span class="bind">{{icon.more}}</span>
+        </div>
+    </div>
+</div>
