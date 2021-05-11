@@ -1,20 +1,24 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { AppComponent } from './app.component';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
+import { YearPipePipe } from './pipes/year-pipe.pipe';
+import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { YearPipePipe } from './pipes/year-pipe.pipe';
+import { BrowserModule } from '@angular/platform-browser';
 import { CarsComponent } from './components/cars/cars.component';
-import { IconsComponent } from './components/icons/icons.component';
 import { MenuComponent } from './components/menu/menu.component';
-import { Routes, RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { NgxUiLoaderModule } from 'ngx-ui-loader';
+import { IconsComponent } from './components/icons/icons.component';
+import { MissingIconsComponent } from './components/missing-icons/missing-icons.component';
+import { DatePipe } from './pipes/date.pipe';
+import { CommonModule } from "@angular/common";
 
 const appRoutes: Routes = [
   { path: '' , component: MenuComponent},
   { path: 'cars', component: CarsComponent},
-  { path: 'icons' , component: IconsComponent}
+  { path: 'icons' , component: IconsComponent},
+  { path: 'missing' , component: MissingIconsComponent},
 ];
 
 @NgModule({
@@ -23,7 +27,9 @@ const appRoutes: Routes = [
     YearPipePipe,
     CarsComponent,
     IconsComponent,
-    MenuComponent
+    MenuComponent,
+    DatePipe,
+    MissingIconsComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +37,8 @@ const appRoutes: Routes = [
     NgxUiLoaderModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

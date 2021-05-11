@@ -22,6 +22,9 @@ export class MenuComponent implements OnInit {
         case 'lights':
           this.router.navigateByUrl('icons');
           break;
+        case 'missing':
+          this.router.navigateByUrl('missing');
+          break;
       }
     }
   }

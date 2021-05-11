@@ -1,0 +1,22 @@
+<div class="envelop">
+    <h1>תמוהות חסרות:</h1>
+    <div class="no-data" *ngIf="!missingIcons || missingIcons.length === 0">אין הודעות חדשות</div>
+    <div *ngFor="let mi of missingIcons" class="mi">
+        <div class="couple">
+            <div class="label">תיאור</div>
+            <div class="value">{{mi.text}}</div>
+        </div>
+        <div class="couple">
+            <div class="label">תמונה</div>
+            <div class="value" *ngIf="mi.picture"><img [src]="mi.picture"  style="width: 80px; height: 80px;"/></div>
+            <div class="value" *ngIf="!mi.picture">אין תמונה</div>
+        </div>
+        <div class="couple">
+            <div class="label">תאריך</div>
+            <div class="value">{{mi.date | dp  }}</div>
+        </div>
+        <div class="couple">
+            <button class="but" (click)="markAsread(mi)">סמן כנקרא</button>
+        </div>
+    </div>
+</div>
