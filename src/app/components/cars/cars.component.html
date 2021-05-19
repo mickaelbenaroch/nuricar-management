@@ -1,7 +1,86 @@
 <div class="envelop">
     <h1>ברוך הבא למערכת הניהול של NURICAR</h1>
-    <section *ngIf="state === 1" class="sec1">
-        <div *ngFor="let car of cars" class="car-div">
+    <section *ngIf="state === 1 && mazda.length > 0" class="sec1">
+        <div class="label">מזדה:</div>
+        <div *ngFor="let car of mazda" class="car-div">
+            <button (click)="carClicked(car)">{{car.modelName}}</button>
+        </div>
+    </section>
+    <section *ngIf="state === 1  && toyota.length > 0" class="sec1">
+        <div class="label">טויוטה:</div>
+        <div *ngFor="let car of toyota" class="car-div">
+            <button (click)="carClicked(car)">{{car.modelName}}</button>
+        </div>
+    </section>
+    <section *ngIf="state === 1  && hyunday.length > 0" class="sec1">
+        <div class="label">יונדאי:</div>
+        <div *ngFor="let car of hyunday" class="car-div">
+            <button (click)="carClicked(car)">{{car.modelName}}</button>
+        </div>
+    </section>
+    <section *ngIf="state === 1  && kia.length > 0" class="sec1">
+        <div class="label">קיה:</div>
+        <div *ngFor="let car of kia" class="car-div">
+            <button (click)="carClicked(car)">{{car.modelName}}</button>
+        </div>
+    </section>
+    <section *ngIf="state === 1  && nissan.length > 0" class="sec1">
+        <div class="label">ניסאן:</div>
+        <div *ngFor="let car of nissan" class="car-div">
+            <button (click)="carClicked(car)">{{car.modelName}}</button>
+        </div>
+    </section>
+    <section *ngIf="state === 1 && mitsubishi.length > 0" class="sec1">
+        <div class="label">מיצובישי:</div>
+        <div *ngFor="let car of mitsubishi" class="car-div">
+            <button (click)="carClicked(car)">{{car.modelName}}</button>
+        </div>
+    </section>
+    <section *ngIf="state === 1 && renault.length > 0" class="sec1">
+        <div class="label">רנו:</div>
+        <div *ngFor="let car of renault" class="car-div">
+            <button (click)="carClicked(car)">{{car.modelName}}</button>
+        </div>
+    </section>
+    <section *ngIf="state === 1 && peugeot.length > 0" class="sec1">
+        <div class="label">פיג'ו:</div>
+        <div *ngFor="let car of peugeot" class="car-div">
+            <button (click)="carClicked(car)">{{car.modelName}}</button>
+        </div>
+    </section>
+    <section *ngIf="state === 1 && audi.length > 0" class="sec1">
+        <div class="label">אאודי:</div>
+        <div *ngFor="let car of audi" class="car-div">
+            <button (click)="carClicked(car)">{{car.modelName}}</button>
+        </div>
+    </section>
+    <section *ngIf="state === 1 && suzuki.length > 0" class="sec1">
+        <div class="label">סוזוקי:</div>
+        <div *ngFor="let car of suzuki" class="car-div">
+            <button (click)="carClicked(car)">{{car.modelName}}</button>
+        </div>
+    </section>
+    <section *ngIf="state === 1 && honda.length > 0" class="sec1">
+        <div class="label">הונדה:</div>
+        <div *ngFor="let car of honda" class="car-div">
+            <button (click)="carClicked(car)">{{car.modelName}}</button>
+        </div>
+    </section>
+    <section *ngIf="state === 1 && ford.length > 0" class="sec1">
+        <div class="label">פורד:</div>
+        <div *ngFor="let car of ford" class="car-div">
+            <button (click)="carClicked(car)">{{car.modelName}}</button>
+        </div>
+    </section>
+    <section *ngIf="state === 1 && wolswagen.length > 0" class="sec1">
+        <div class="label">פולסווגן:</div>
+        <div *ngFor="let car of wolswagen" class="car-div">
+            <button (click)="carClicked(car)">{{car.modelName}}</button>
+        </div>
+    </section>
+    <section *ngIf="state === 1 && skoda.length > 0" class="sec1">
+        <div class="label">סקודה:</div>
+        <div *ngFor="let car of skoda" class="car-div">
             <button (click)="carClicked(car)">{{car.modelName}}</button>
         </div>
     </section>
