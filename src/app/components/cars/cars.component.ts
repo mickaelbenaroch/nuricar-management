@@ -94,6 +94,9 @@ export class CarsComponent implements OnInit {
     } else {
       prefix = prefix + year + '/';
     }
+    if (prefix.endsWith('sth/') ) {
+      prefix = prefix.slice(0, -2) + '/';
+    }
     for (let i = 1; i < arrLenght + 1; i++) {
       this.iconsArr.push(prefix + 'image' + i + '.png');
     }
