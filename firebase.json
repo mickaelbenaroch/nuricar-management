@@ -3,7 +3,7 @@
     "rules": "database.rules.json"
   },
   "hosting": {
-    "public": "public",
+    "public": "Nuricar-Management/dist/Nuricar-Management",
     "site": "nuricar-management",
     "ignore": [
       "firebase.json",
