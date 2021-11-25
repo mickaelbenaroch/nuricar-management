@@ -13,10 +13,36 @@ export class IconsComponent implements OnInit {
   private readonly baseUrl = "https://yossi-deliveries-api.vercel.app/";
   private paths = ApiPaths;
   public icons: Icon[] = [];
+  public newIcon = new Icon();
+  public showNewIconContent: boolean = false;
   constructor(private httpClient: HttpClient, private ngxService: NgxUiLoaderService) { }
 
   ngOnInit(): void {
     this.getIcons();
+  }
+
+  toggleAddNewIcon() {
+    this.showNewIconContent = !this.showNewIconContent;
+  }
+  createIcon() {
+    if (this.newIcon) {
+      this.ngxService.start();
+      this.httpClient.post(this.baseUrl + this.paths.CREATEICON, this.newIcon).subscribe(
+        (response: any) => {
+          if (response && response.data) {
+            window.alert(`new icon ${this.newIcon.title} has been created successfully!`);
+            this.ngxService.stop();
+          } else {
+            console.log("לא הצליח!");
+            this.ngxService.stop();
+          }
+        },
+        (err: any) => {
+          console.log('back from server with error : ' + err);
+          this.ngxService.stop();
+        }
+      );
+    }
   }
 
   getIcons() {

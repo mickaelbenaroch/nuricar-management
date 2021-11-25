@@ -3,5 +3,6 @@ export enum ApiPaths {
     GETICONS = 'icons/icons',
     UPDATEICONS = 'icons/update',
     MISSINGICONS = 'icons/missing',
-    MARKMISSONGICONASREAD = 'icons/markasread'
+    MARKMISSONGICONASREAD = 'icons/markasread',
+    CREATEICON = 'icons/createIcon'
 }
