@@ -1,5 +1,15 @@
 .envelop {
     direction: rtl;
+    .search {
+        button {
+            cursor: pointer;
+        }
+    }
+    .count {
+        font-size: 20px;
+        margin-top: 10px;
+        color: brown;
+    }
     h1 {
         text-align: right;
     }

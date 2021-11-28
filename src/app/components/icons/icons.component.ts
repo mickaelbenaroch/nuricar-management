@@ -14,11 +14,23 @@ export class IconsComponent implements OnInit {
   private paths = ApiPaths;
   public icons: Icon[] = [];
   public newIcon = new Icon();
+  public searchString: string = '';
   public showNewIconContent: boolean = false;
   constructor(private httpClient: HttpClient, private ngxService: NgxUiLoaderService) { }
 
   ngOnInit(): void {
     this.getIcons();
+  }
+
+  cleanFilter() {
+    this.searchString = '';
+    this.getIcons();
+  }
+
+  search() {
+    if (this.searchString) {
+      this.icons = this.icons.filter(i => { return i.title.includes(this.searchString)})
+    }
   }
 
   toggleAddNewIcon() {
@@ -32,9 +44,11 @@ export class IconsComponent implements OnInit {
           if (response && response.data) {
             window.alert(`new icon ${this.newIcon.title} has been created successfully!`);
             this.ngxService.stop();
+            this.getIcons();
           } else {
             console.log("לא הצליח!");
             this.ngxService.stop();
+            this.getIcons();
           }
         },
         (err: any) => {

@@ -1,4 +1,10 @@
 <div class="envelop">
+    <div class="search">
+        <input placeholder="חיפוש..." [(ngModel)]="searchString" name="searchString"/>
+        <button (click)="search()">חפש</button>
+        <button (click)="cleanFilter()">clean filter</button>
+    </div>
+    <div class="count">יש כרגע {{icons?.length}} נורות</div>
     <h1>נורות הזהרה</h1>
     <div style="direction: rtl;">
         <button (click)="toggleAddNewIcon()" *ngIf="!showNewIconContent" >הוסף נורה חדשה</button>
