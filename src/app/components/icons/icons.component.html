@@ -34,6 +34,7 @@
     </div>
     <div *ngFor="let icon of icons" class="part">
         <button (click)="edit(icon)">{{icon.buttonState}}</button>
+        <button (click)="delete(icon)">delete</button>
         <div class="couple">
             <span class="label">שם הנורית:</span>
             <input class="bind" [disabled]="!icon.isInEditMode" value="{{icon.title}}" (change)="modelChanged($event, icon, 'title')"/>
@@ -53,7 +54,7 @@
         <div class="couple">
             <span class="label" style="width: 178px !important">נורות משוייכות</span>
             <ul>
-                <li style="background-color: yellow; padding: 5px;" *ngFor="let path of icon.paths">{{path}}<img [src]="path" style="height: 30px;width: 30px;margin-right: 10px;"/></li>
+                <li style="background-color: yellow; padding: 5px;" *ngFor="let path of icon.paths">{{path}}<img [src]="path" style="height: 30px;width: 30px;margin-right: 10px;"/><button (click)="deletePath(icon, path)">Delete</button>></li>
                 <input [disabled]="!icon.isInEditMode" style="margin-top: 10px;" value="{{icon.temp}}" placeholder="כתוב משהו.." (change)="modelpathAdd($event, icon)" type="text"/><button (click)="addPath(icon)">הוסף</button>
             </ul>
         </div>
@@ -62,21 +63,4 @@
             <span class="bind">{{icon.more}}</span>
         </div>
     </div>
-    <!-- <div id="accordion">
-        <div class="card">
-          <div class="card-header" id="headingOne">
-            <h5 class="mb-0">
-              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Collapsible Group Item #1
-              </button>
-            </h5>
-          </div>
-      
-          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-            <div class="card-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-            </div>
-          </div>
-        </div>
-    </div> -->
 </div>

@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ApiPaths } from 'src/const/api-paths';
 import { Icon } from 'src/models/icons';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-icons',
@@ -16,7 +18,9 @@ export class IconsComponent implements OnInit {
   public newIcon = new Icon();
   public searchString: string = '';
   public showNewIconContent: boolean = false;
-  constructor(private httpClient: HttpClient, private ngxService: NgxUiLoaderService) { }
+  constructor(private httpClient: HttpClient,
+              private ngxService: NgxUiLoaderService,
+              private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getIcons();
@@ -31,6 +35,80 @@ export class IconsComponent implements OnInit {
     if (this.searchString) {
       this.icons = this.icons.filter(i => { return i.title.includes(this.searchString)})
     }
+  }
+
+  deletePath(icon: Icon, path: string) {
+    this.dialog.open(DialogComponent, {
+      height: '200px',
+      width: '500px',
+      panelClass: 'missing-box',
+      data: {
+        header: "Delete path from icon",
+        body: "Are you sure you want to delte this path from this icon? (NO WAY BACK)"
+      }
+    }).afterClosed().subscribe(res => {
+      if (res) {
+        console.log("ok " + res);
+        let obj = {
+          _id: icon._id,
+          path: path
+        }
+        this.httpClient.post(this.baseUrl + this.paths.DELETEPATH, obj).subscribe(
+          (response: any) => {
+            if (response && response.data) {
+              window.alert(`Icon has been removed from path successfully!`);
+              this.ngxService.stop();
+              this.getIcons();
+            } else {
+              console.log("לא הצליח!");
+              this.ngxService.stop();
+              this.getIcons();
+            }
+          },
+          (err: any) => {
+            console.log('back from server with error : ' + err);
+            this.ngxService.stop();
+          }
+        );
+      } else {
+        console.log("cancel" + res);
+      }
+    });
+  }
+
+  delete(icon: Icon) {
+    this.dialog.open(DialogComponent, {
+      height: '180px',
+      width: '500px',
+      panelClass: 'missing-box',
+      data: {
+        header: "Delete Icon",
+        body: "Are you sure you want to delte this icon? (NO WAY BACK)"
+      }
+    }).afterClosed().subscribe(res => {
+      if (res) {
+        console.log("ok " + res);
+        this.httpClient.post(this.baseUrl + this.paths.DELETEICON, {_id: icon._id}).subscribe(
+          (response: any) => {
+            if (response && response.data) {
+              window.alert(`Icon has been deleted successfully!`);
+              this.ngxService.stop();
+              this.getIcons();
+            } else {
+              console.log("לא הצליח!");
+              this.ngxService.stop();
+              this.getIcons();
+            }
+          },
+          (err: any) => {
+            console.log('back from server with error : ' + err);
+            this.ngxService.stop();
+          }
+        );
+      } else {
+        console.log("cancel" + res);
+      }
+    });
   }
 
   toggleAddNewIcon() {
