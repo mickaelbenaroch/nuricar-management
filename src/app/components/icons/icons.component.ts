@@ -47,7 +47,7 @@ export class IconsComponent implements OnInit {
         body: "Are you sure you want to delte this path from this icon? (NO WAY BACK)"
       }
     }).afterClosed().subscribe(res => {
-      if (res) {
+      if (res && res === "ok") {
         console.log("ok " + res);
         let obj = {
           _id: icon._id,
@@ -86,7 +86,7 @@ export class IconsComponent implements OnInit {
         body: "Are you sure you want to delte this icon? (NO WAY BACK)"
       }
     }).afterClosed().subscribe(res => {
-      if (res) {
+      if (res && res === "ok") {
         console.log("ok " + res);
         this.httpClient.post(this.baseUrl + this.paths.DELETEICON, {_id: icon._id}).subscribe(
           (response: any) => {
