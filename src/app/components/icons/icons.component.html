@@ -32,35 +32,48 @@
             <button (click)="createIcon()" style="direction: ltr;">Create!</button>
         </div>
     </div>
-    <div *ngFor="let icon of icons" class="part">
-        <button (click)="edit(icon)">{{icon.buttonState}}</button>
-        <button (click)="delete(icon)">delete</button>
-        <div class="couple">
-            <span class="label">שם הנורית:</span>
-            <input class="bind" [disabled]="!icon.isInEditMode" value="{{icon.title}}" (change)="modelChanged($event, icon, 'title')"/>
+    <section class="section">
+        <div *ngFor="let icon of icons" class="part">
+            <div class="buttons">
+                <button (click)="edit(icon)">{{icon.buttonState}}</button>
+                <button (click)="delete(icon)">delete</button>
+            </div>
+            <div class="couple">
+                <span class="label">שם הנורית:</span>
+                <input class="bind" [disabled]="!icon.isInEditMode" value="{{icon.title}}" (change)="modelChanged($event, icon, 'title')"/>
+            </div>
+            <div class="couple">
+                <span class="label">תיאור:</span>
+                <input class="bind" [disabled]="!icon.isInEditMode" value="{{icon.description}}" (change)="modelChanged($event, icon, 'description')"/>
+            </div>
+            <div class="couple">
+                <span class="label">פיתרון:</span>
+                <input class="bind" [disabled]="!icon.isInEditMode" value="{{icon.suggestion}}" (change)="modelChanged($event, icon, 'suggestion')"/>
+            </div>
+            <div class="couple">
+                <span class="label">חמור ברמה:</span>
+                <input class="bind" [disabled]="!icon.isInEditMode" value="{{icon.severity}}" (change)="modelChanged($event, icon, 'severity')"/>
+            </div>
+            <div class="couple pathsSection">
+                <span class="label">נורות משוייכות</span>
+                <div style="width: 100%;display: flex;flex-direction: column;">
+                    <ul>
+                        <li style="padding: 5px;display: flex;justify-content: space-between;" *ngFor="let path of icon.paths">
+                            <span style="width: 460px;">{{path}}</span>
+                            <img [src]="path" style="height: 30px;width: 30px;margin-right: 10px;"/>
+                            <button (click)="deletePath(icon, path)">Delete</button>
+                        </li>
+                    </ul>
+                    <div>
+                        <input [disabled]="!icon.isInEditMode" style="width: calc(100% - 48px);" value="{{icon.temp}}" placeholder="כתוב משהו.." (change)="modelpathAdd($event, icon)" type="text"/>
+                        <button (click)="addPath(icon)">הוסף</button>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="icon && icon.more" class="couple">
+                <span class="label">תוספות:</span>
+                <span class="bind">{{icon.more}}</span>
+            </div>
         </div>
-        <div class="couple">
-            <span class="label">תיאור:</span>
-            <input class="bind" [disabled]="!icon.isInEditMode" value="{{icon.description}}" (change)="modelChanged($event, icon, 'description')"/>
-        </div>
-        <div class="couple">
-            <span class="label">פיתרון:</span>
-            <input class="bind" [disabled]="!icon.isInEditMode" value="{{icon.suggestion}}" (change)="modelChanged($event, icon, 'suggestion')"/>
-        </div>
-        <div class="couple">
-            <span class="label">חמור ברמה:</span>
-            <input class="bind" [disabled]="!icon.isInEditMode" value="{{icon.severity}}" (change)="modelChanged($event, icon, 'severity')"/>
-        </div>
-        <div class="couple">
-            <span class="label" style="width: 178px !important">נורות משוייכות</span>
-            <ul>
-                <li style="background-color: yellow; padding: 5px;" *ngFor="let path of icon.paths">{{path}}<img [src]="path" style="height: 30px;width: 30px;margin-right: 10px;"/><button (click)="deletePath(icon, path)">Delete</button>></li>
-                <input [disabled]="!icon.isInEditMode" style="margin-top: 10px;" value="{{icon.temp}}" placeholder="כתוב משהו.." (change)="modelpathAdd($event, icon)" type="text"/><button (click)="addPath(icon)">הוסף</button>
-            </ul>
-        </div>
-        <div *ngIf="icon && icon.more" class="couple">
-            <span class="label">תוספות:</span>
-            <span class="bind">{{icon.more}}</span>
-        </div>
-    </div>
+    </section>
 </div>
