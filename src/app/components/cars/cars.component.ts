@@ -10,7 +10,7 @@ import { Car } from 'src/models/car';
   styleUrls: ['./cars.component.scss']
 })
 export class CarsComponent implements OnInit {
-
+  //dummy commit
   title = 'Nuricar-Management';
   private readonly baseUrl = "https://yossi-deliveries-api.vercel.app/";
   private paths = ApiPaths;
