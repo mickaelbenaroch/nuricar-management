@@ -12,7 +12,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { IconsComponent } from './components/icons/icons.component';
 import { MissingIconsComponent } from './components/missing-icons/missing-icons.component';
 import { DatePipe } from './pipes/date.pipe';
-import { CommonModule } from "@angular/common";
+import { CommonModule } from '@angular/common';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
 
