@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "Nuricar-Management",
+    "public": "dist/Nuricar-Management",
     "ignore": [
       "firebase.json",
       "**/.*",
