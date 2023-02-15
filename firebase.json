@@ -1,22 +1,22 @@
 {
-  "redirects": [
-    {
-      "source": "/cars",
-      "destination": "/",
-      "type": 301
-    },
-    {
-      "source": "/icons",
-      "destination": "/",
-      "type": 301
-    },
-    {
-      "source": "/missing",
-      "destination": "/",
-      "type": 301
-    }
-  ],
   "hosting": {
+    "redirects": [
+      {
+        "source": "/cars",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/icons",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/missing",
+        "destination": "/",
+        "type": 301
+      }
+    ],
     "public": "dist/Nuricar-Management",
     "ignore": [
       "firebase.json",

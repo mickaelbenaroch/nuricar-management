@@ -12,12 +12,12 @@ import { DialogComponent } from '../dialog/dialog.component';
   styleUrls: ['./icons.component.scss']
 })
 export class IconsComponent implements OnInit {
-  private readonly baseUrl = "https://yossi-deliveries-api.vercel.app/";
+  private readonly baseUrl = 'https://yossi-deliveries-api.vercel.app/';
   private paths = ApiPaths;
   public icons: Icon[] = [];
   public newIcon = new Icon();
-  public searchString: string = '';
-  public showNewIconContent: boolean = false;
+  public searchString = '';
+  public showNewIconContent = false;
   constructor(private httpClient: HttpClient,
               private ngxService: NgxUiLoaderService,
               private dialog: MatDialog) { }
@@ -33,7 +33,7 @@ export class IconsComponent implements OnInit {
 
   search() {
     if (this.searchString) {
-      this.icons = this.icons.filter(i => { return i.title.includes(this.searchString)})
+      this.icons = this.icons.filter(i => i.title.includes(this.searchString));
     }
   }
 
@@ -43,16 +43,16 @@ export class IconsComponent implements OnInit {
       width: '500px',
       panelClass: 'missing-box',
       data: {
-        header: "Delete path from icon",
-        body: "Are you sure you want to delte this path from this icon? (NO WAY BACK)"
+        header: 'Delete path from icon',
+        body: 'Are you sure you want to delte this path from this icon? (NO WAY BACK)'
       }
     }).afterClosed().subscribe(res => {
-      if (res && res === "ok") {
-        console.log("ok " + res);
-        let obj = {
+      if (res && res === 'ok') {
+        console.log('ok ' + res);
+        const obj = {
           _id: icon._id,
-          path: path
-        }
+          path
+        };
         this.httpClient.post(this.baseUrl + this.paths.DELETEPATH, obj).subscribe(
           (response: any) => {
             if (response && response.data) {
@@ -60,7 +60,7 @@ export class IconsComponent implements OnInit {
               this.ngxService.stop();
               this.getIcons();
             } else {
-              console.log("לא הצליח!");
+              console.log('לא הצליח!');
               this.ngxService.stop();
               this.getIcons();
             }
@@ -71,7 +71,7 @@ export class IconsComponent implements OnInit {
           }
         );
       } else {
-        console.log("cancel" + res);
+        console.log('cancel' + res);
       }
     });
   }
@@ -82,12 +82,12 @@ export class IconsComponent implements OnInit {
       width: '500px',
       panelClass: 'missing-box',
       data: {
-        header: "Delete Icon",
-        body: "Are you sure you want to delte this icon? (NO WAY BACK)"
+        header: 'Delete Icon',
+        body: 'Are you sure you want to delte this icon? (NO WAY BACK)'
       }
     }).afterClosed().subscribe(res => {
-      if (res && res === "ok") {
-        console.log("ok " + res);
+      if (res && res === 'ok') {
+        console.log('ok ' + res);
         this.httpClient.post(this.baseUrl + this.paths.DELETEICON, {_id: icon._id}).subscribe(
           (response: any) => {
             if (response && response.data) {
@@ -95,7 +95,7 @@ export class IconsComponent implements OnInit {
               this.ngxService.stop();
               this.getIcons();
             } else {
-              console.log("לא הצליח!");
+              console.log('לא הצליח!');
               this.ngxService.stop();
               this.getIcons();
             }
@@ -106,7 +106,7 @@ export class IconsComponent implements OnInit {
           }
         );
       } else {
-        console.log("cancel" + res);
+        console.log('cancel' + res);
       }
     });
   }
@@ -124,7 +124,7 @@ export class IconsComponent implements OnInit {
             this.ngxService.stop();
             this.getIcons();
           } else {
-            console.log("לא הצליח!");
+            console.log('לא הצליח!');
             this.ngxService.stop();
             this.getIcons();
           }
@@ -148,7 +148,7 @@ export class IconsComponent implements OnInit {
         console.log('error to get icons');
         this.getIcons();
       }
-    })
+    });
   }
 
   edit(icon: Icon) {
@@ -164,7 +164,7 @@ export class IconsComponent implements OnInit {
   }
   sendToDB(icon: Icon) {
     this.ngxService.start();
-    this.httpClient.post(this.baseUrl + this.paths.UPDATEICONS, icon).subscribe((res: any)=> {
+    this.httpClient.post(this.baseUrl + this.paths.UPDATEICONS, icon).subscribe((res: any) => {
       if (res && res.data && res.data.result && res.data.result.n === 1) {
         this.getIcons();
       } else {
@@ -174,38 +174,38 @@ export class IconsComponent implements OnInit {
   }
 
   modelChanged(change: any, icon: Icon, action: string) {
-    let ic = this.icons.find(tl => tl.title === icon.title);
+    const ic = this.icons.find(tl => tl.title === icon.title);
     if (ic) {
-      let ind = this.icons.indexOf(ic);
-      switch(action) {
+      const ind = this.icons.indexOf(ic);
+      switch (action) {
         case 'title':
           this.icons[ind].title = change.target.value;
           break;
         case 'description':
           this.icons[ind].description = change.target.value;
-          break
+          break;
         case 'suggestion':
           this.icons[ind].suggestion = change.target.value;
-          break
+          break;
         case 'severity':
           this.icons[ind].severity = change.target.value;
-          break
+          break;
         case 'more':
           this.icons[ind].more = change.target.value;
-          break
+          break;
       }
     }
     console.log(this.icons);
   }
 
   addPath(icon: Icon) {
-    let ic = this.icons.find(tl => tl.title === icon.title);
+    const ic = this.icons.find(tl => tl.title === icon.title);
     if (ic) {
       this.icons[this.icons.indexOf(ic)].paths.push(icon.temp.toString());
     }
   }
   modelpathAdd(event: any, icon: Icon) {
-    let  ic = this.icons.find(tl => tl.title === icon.title);
+    const  ic = this.icons.find(tl => tl.title === icon.title);
     if (ic) {
       this.icons[this.icons.indexOf(ic)].temp = event.target.value;
     }
