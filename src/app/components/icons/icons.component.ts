@@ -18,6 +18,7 @@ export class IconsComponent implements OnInit {
   public newIcon = new Icon();
   public searchString = '';
   public showNewIconContent = false;
+  private scrollHeight = 0;
   constructor(private httpClient: HttpClient,
               private ngxService: NgxUiLoaderService,
               private dialog: MatDialog) { }
@@ -144,6 +145,7 @@ export class IconsComponent implements OnInit {
         this.icons = response.data;
         this.icons.forEach(ic => ic.buttonState = 'Edit');
         this.ngxService.stop();
+        this.restoreScroll();
       } else {
         console.log('error to get icons');
         this.getIcons();
@@ -162,7 +164,11 @@ export class IconsComponent implements OnInit {
       icon.buttonState = 'Edit';
     }
   }
+  private restoreScroll() {
+    window.scrollTo(0, this.scrollHeight);
+  }
   sendToDB(icon: Icon) {
+    this.scrollHeight = window.pageYOffset;
     this.ngxService.start();
     this.httpClient.post(this.baseUrl + this.paths.UPDATEICONS, icon).subscribe((res: any) => {
       if (res && res.data && res.data.result && res.data.result.n === 1) {
