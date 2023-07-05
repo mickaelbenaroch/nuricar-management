@@ -150,6 +150,8 @@ export class IconsComponent implements OnInit {
         console.log('error to get icons');
         this.getIcons();
       }
+    }, error => {
+      this.restoreScroll();
     });
   }
 
@@ -165,7 +167,9 @@ export class IconsComponent implements OnInit {
     }
   }
   private restoreScroll() {
-    window.scrollTo(0, this.scrollHeight);
+    setTimeout(() => {
+      window.scrollTo(0, this.scrollHeight);
+    }, 1000);
   }
   sendToDB(icon: Icon) {
     this.scrollHeight = window.pageYOffset;
