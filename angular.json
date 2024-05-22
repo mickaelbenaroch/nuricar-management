@@ -75,18 +75,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Nuricar-Management:build"
+            "buildTarget": "Nuricar-Management:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Nuricar-Management:build:production"
+              "buildTarget": "Nuricar-Management:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Nuricar-Management:build"
+            "buildTarget": "Nuricar-Management:build"
           }
         },
         "test": {
