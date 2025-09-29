@@ -1,9 +1,12 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
+  standalone: true,
   selector: 'app-dialog',
+  imports: [CommonModule, FormsModule],
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.scss']
 })

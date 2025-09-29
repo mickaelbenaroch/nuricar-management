@@ -3,11 +3,15 @@ import { Component, OnInit } from '@angular/core';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ApiPaths } from 'src/const/api-paths';
 import { Car } from 'src/models/car';
-
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { YearPipePipe } from 'src/app/pipes/year-pipe.pipe';
 @Component({
-  selector: 'app-cars',
-  templateUrl: './cars.component.html',
-  styleUrls: ['./cars.component.scss']
+    standalone: true,
+    selector: 'app-root',
+    imports: [CommonModule, FormsModule, YearPipePipe],
+    templateUrl: './cars.component.html',
+    styleUrls: ['./cars.component.scss']
 })
 export class CarsComponent implements OnInit {
   //dummy commit

@@ -3,8 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ApiPaths } from 'src/const/api-paths';
 import { MissingIcon } from 'src/models/missing-icon';
-
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { DatePipe } from 'src/app/pipes/date.pipe';
 @Component({
+  standalone: true,
+   imports: [CommonModule, FormsModule, DatePipe],
   selector: 'app-missing-icons',
   templateUrl: './missing-icons.component.html',
   styleUrls: ['./missing-icons.component.scss']

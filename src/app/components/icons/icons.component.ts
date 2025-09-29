@@ -5,8 +5,11 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ApiPaths } from 'src/const/api-paths';
 import { Icon } from 'src/models/icons';
 import { DialogComponent } from '../dialog/dialog.component';
-
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 @Component({
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   selector: 'app-icons',
   templateUrl: './icons.component.html',
   styleUrls: ['./icons.component.scss']
