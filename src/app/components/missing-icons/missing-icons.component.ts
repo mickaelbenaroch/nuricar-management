@@ -15,7 +15,7 @@ import { DatePipe } from 'src/app/pipes/date.pipe';
 })
 export class MissingIconsComponent implements OnInit {
   private path = ApiPaths;
-  private readonly baseUrl = "https://yossi-deliveries-api.vercel.app/";
+  private readonly baseUrl = "https://nuricarapi.onrender.com/";
   public missingIcons: MissingIcon[] = [];
   constructor(private httpclient: HttpClient, private ngxservice: NgxUiLoaderService) { }
 

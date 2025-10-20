@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./icons.component.scss']
 })
 export class IconsComponent implements OnInit {
-  private readonly baseUrl = 'https://yossi-deliveries-api.vercel.app/';
+  private readonly baseUrl = 'https://nuricarapi.onrender.com/';
   private paths = ApiPaths;
   public icons: Icon[] = [];
   public newIcon = new Icon();

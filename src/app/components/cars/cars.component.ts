@@ -16,7 +16,7 @@ import { YearPipePipe } from 'src/app/pipes/year-pipe.pipe';
 export class CarsComponent implements OnInit {
   //dummy commit
   title = 'Nuricar-Management';
-  private readonly baseUrl = "https://yossi-deliveries-api.vercel.app/";
+  private readonly baseUrl = "https://nuricarapi.onrender.com/";
   private paths = ApiPaths;
   public selectedCar: Car = new Car();
   public state: number = 1;
